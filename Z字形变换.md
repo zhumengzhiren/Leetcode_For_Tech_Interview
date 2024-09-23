@@ -29,8 +29,12 @@ P     I
 输入：s = "A", numRows = 1
 输出："A"
 
+思路及算法
 
-<!-- class Solution(object):
+非常有意思的一道题，分别有矩阵数组字符串三种解法，随着数据结构越来越简单，解法所需要的思路也越来越复杂。与之相对应的，解法所需求的时间也越来越短。
+
+```
+class Solution(object):
     def convert(self, s, numRows):
         """
         :type s: str
@@ -54,6 +58,6 @@ P     I
                 if sep < base:
                     sep = base - sep
                 k += sep
-        return new -->
+        return new
+```
 
-非常有意思的一道题，分别有矩阵数组字符串三种解法，随着数据结构越来越简单，解法所需要的思路也越来越复杂。与之相对应的，解法所需求的时间也越来越短。
