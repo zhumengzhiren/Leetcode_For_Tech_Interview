@@ -20,7 +20,7 @@
 import collections
 
 # 第一种写法
-def groupAnagrams(self, strs):
+def groupAnagrams(strs):
         # 首先建立mp,以列表作为key，记住是collections.defaultdict(list)
         # collections是python中的集合类，defaultdict则表示使用[]作为key不存在时的默认填充值
         mp = collections.defaultdict(list)
