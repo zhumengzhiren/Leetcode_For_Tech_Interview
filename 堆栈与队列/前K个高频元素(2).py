@@ -11,6 +11,7 @@
 # 输出: [1]
 import collections
 import heapq
+
 def topKFrequent(self, nums, k) :
     count = collections.Counter(nums)
     heap = [(val,key) for key, val in count.items()]
