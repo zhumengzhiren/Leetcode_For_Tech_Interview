@@ -24,7 +24,8 @@
 
 class NumArray:
 
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums):
+        # 前缀和，简单的dp，但要预留
         s = [0] * (len(nums)+1)
         for i, x in enumerate(nums):
             s[i+1] = s[i] + nums[i]
@@ -38,6 +39,23 @@ class NumArray:
         
 
 
+
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
+    
+    class Node:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.prev = None
+            self.next = None
+    
+    class LRUCache:
+        def __init__(self,capacity):
+            self.capacity = capacity
+            self.cache = {}
+            self.head = Node(None, None)
+            self.tail = Node(None, None)
+            self.head.next = self.tail
+            self.tail.prev
