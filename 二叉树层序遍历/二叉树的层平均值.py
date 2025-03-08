@@ -11,27 +11,28 @@
 # 输入：root = [3,9,20,15,7]
 # 输出：[3.00000,14.50000,11.00000]
 
-# 层序遍历五部曲
+# 层序遍历九部曲
 def averageOfLevels(self, root):
-    # 创建结果集
+    # 1. 创建结果集
     results = []
+    # 2. 判空
     if not root:
-        results
-    # 创建队列
+        return results
+    # 3. 创建队列
     q = [root]
     while q:
-        # 进行预保存队列长度和返回总和
+        # 4.进行预保存队列长度
+        # 5.初始化层返回总和
         size = len(q)
         sum = 0
         for _ in range(size):
-            # 在队列中加入子树
+            # 6.在队列中加入子树
             node = q.pop(0)
+            # 7. 处理层综合
             sum += node.val
-            if node.left:
-                q.append(node.left)
-            if node.right:
-                q.append(node.right)
-        # 加入结果
+            if node.left: q.append(node.left)
+            if node.right: q.append(node.right)
+        # 8. 加入层结果
         results.append(sum/size)
-    # 返回结果
+    # 9. 返回结果
     return results
