@@ -26,25 +26,20 @@
 # exention -> exection (将 'n' 替换为 'c')
 # exection -> execution (插入 'u')
 
-# 二维数组初始化做法
-def minDistance(word1, word2):
-    m , n = len(word1), len(word2)
-    # 难点1:dp的顺序很重要，先被初始化的反而是内侧的元素，要牢记这一点，不然就会出错
-    dp = [[0 for _ in range(n+1)] for _ in range(m+1)] 
-    # 难点2:初始化第一行和第一列
-    dp[0] = list(range(n+1))
-    # for i in range(m+1):
-    #     dp[i][0] = i
-    # 难点3:从序号1开始遍历而非序号零
-    for i in range(1,m+1):
-        dp[i][0] = i
-        for j in range(1,n+1):
+def minDistance(word1: str, word2: str) -> int:
+    n , m = len(word1), len(word2)
+    # 滚动数组法，空间m
+    dp = [list(range(m+1)),[0]*(m+1)]
+    # 照例从1开始遍历
+    for i in range(1,n+1):
+        # 奇偶数交替迭代
+        dp[i%2][0] = i
+        for j in range(1,m+1):
             if word1[i-1] == word2[j-1]:
-                # 难点四：相等时的跳跃处理
-                dp[i][j] = dp[i-1][j-1]
+                dp[i%2][j] = dp[i%2-1][j-1]
             else:
-                dp[i][j] = min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) +1 
-    return dp[-1][-1]
+                dp[i%2][j] = min(dp[i%2-1][j-1], dp[i%2][j-1], dp[i%2-1][j]) + 1
+    return dp[i%2][m]
 
 print(minDistance("horse", "ros"))
 print(minDistance("intention","execution"))
