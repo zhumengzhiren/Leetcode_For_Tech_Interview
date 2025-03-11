@@ -26,23 +26,22 @@
 # exention -> exection (将 'n' 替换为 'c')
 # exection -> execution (插入 'u')
 
-from functools import cache
+# 二维数组初始化做法
+def minDistance(word1, word2):
+    m , n = len(word1), len(word2)
+    # 注意这里dp的顺序很重要，先被初始化的反而是内侧的元素，要牢记这一点，不然就会出错
+    dp = [[0 for _ in range(n+1)] for _ in range(m+1)] 
+    dp[0] = list(range(n+1))
+    # for i in range(m+1):
+    #     dp[i][0] = i
+    for i in range(m+1):
+        dp[i][0] = i
+        for j in range(n+1):
+            if word1[i-1] == word2[j-1]:
+                dp[i][j] = dp[i-1][j-1]
+            else:
+                dp[i][j] = min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) +1 
+    return dp[-1][-1]
 
-# 递归做法
-def minDistance(self, word1: str, word2: str) -> int:
-        m, n = len(word1), len(word2)
-        # cache很重要，不然会超时
-        @cache
-        def dfs(i, j):
-            # base case
-            if i < 0:
-                return j + 1
-            if j < 0:
-                return i + 1
-            # 如果两个字符相等，不需要操作
-            if word1[i] == word2[j]:
-                return dfs(i-1,j-1)
-            # 如果不相等，三种操作方式
-            return min(dfs(i-1,j), dfs(i,j-1),dfs(i-1,j-1)) + 1
-        # 从后往前递归
-        return dfs(m-1,n-1)
+print(minDistance("horse", "ros"))
+print(minDistance("intention","execution"))
