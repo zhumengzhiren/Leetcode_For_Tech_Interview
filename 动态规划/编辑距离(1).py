@@ -28,6 +28,8 @@
 
 from functools import cache
 
+# 字节生活服务一面惨挂
+
 # 递归做法
 def minDistance(self, word1: str, word2: str) -> int:
         m, n = len(word1), len(word2)

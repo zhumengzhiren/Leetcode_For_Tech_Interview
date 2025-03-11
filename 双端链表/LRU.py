@@ -1,3 +1,5 @@
+# Pingcap后端研发一面惨挂
+
 # 每个node都是一个键值对+双向链表
 class Node:
     __slots_ = 'prev', 'next', 'key', 'value'
