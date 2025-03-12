@@ -28,12 +28,13 @@ def pathSum(self, root, targetSum):
             if not node:
                 return None
             cur.append(node.val)
+            left -= node.val
             if node.left is node.right:
-                if sum(cur) == targetSum:
+                if left == 0:
                     result.append(cur.copy())
-            dfs(node.left)
-            dfs(node.right)
+            dfs(node.left,left)
+            dfs(node.right,left)
             cur.pop()
-        dfs(root)
+        dfs(root,targetSum)
         return result
         
