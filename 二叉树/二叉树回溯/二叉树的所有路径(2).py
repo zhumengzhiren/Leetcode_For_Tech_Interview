@@ -19,6 +19,19 @@ class TreeNode:
         self.right = right
 
 def binaryTreePaths(root):
+    result = []
+    def dfs(node,path):
+        if not node:
+            return
+        path += str(node.val)
+        if node.left is node.right:
+            result.append(path)
+        path += "->"
+        dfs(node.left,path)
+        dfs(node.right,path)
+    dfs(root,"")
+    return result
+
 
 root = TreeNode(1)
 root.left = TreeNode(2)
