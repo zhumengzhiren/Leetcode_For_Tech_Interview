@@ -10,7 +10,7 @@
 # 输入：head = [1,2]
 # 输出：false
 
-# 经典题目, 反转链表 + 快慢指针
+# 经典题目, 反转链表 + 快慢指针，居然是easy题目
 
 def isPalindrome(self, head):
     # 先写一个快慢指针范式

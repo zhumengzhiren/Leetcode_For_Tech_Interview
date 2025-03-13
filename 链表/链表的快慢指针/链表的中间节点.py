@@ -18,6 +18,7 @@ class ListNode:
         self.val = val
         self.next = next
 
+# 注意，该算法总是会返回第二个中间节点。如果有两个中间节点，则返回第二个中间节点。
 def middleNode(head):
     slow = fast = head
     while fast and fast.next:
