@@ -28,15 +28,13 @@
 # 输出：1
 
 def maxVowels(self, s: str, k: int) -> int:
-        ans = cur = 0
-        for i,c in enumerate(s):
-            if c in "aeiou":
-                cur += 1
-            if i < k:
-                ans = max(ans,cur)
-                continue
-            else:
-                if s[i-k] in "aeiou":
-                    cur -= 1
-            ans = max(ans,cur)
-        return ans
+    ans = cur = 0
+    for i,c in enumerate(s):
+        if c in "aeiou":
+            cur += 1
+        if i < k - 1:
+            continue
+        ans = max(ans,cur)
+        if s[i-k+1] in "aeiou":
+            cur -= 1      
+    return ans
